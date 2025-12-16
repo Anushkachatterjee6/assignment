@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 173 80% 45%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 173 58% 35%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 173 80% 45%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(173 80% 45%), hsl(199 89% 48%));
+    --gradient-card: linear-gradient(145deg, hsl(222 47% 10%), hsl(222 47% 7%));
+    --gradient-score-high: linear-gradient(135deg, hsl(152 76% 50%), hsl(173 80% 45%));
+    --gradient-score-medium: linear-gradient(135deg, hsl(38 92% 50%), hsl(45 93% 47%));
+    --gradient-score-low: linear-gradient(135deg, hsl(0 84% 60%), hsl(15 85% 55%));
+    
+    --shadow-glow: 0 0 40px hsl(173 80% 45% / 0.15);
+    --shadow-card: 0 4px 24px hsl(222 47% 4% / 0.5);
+    --shadow-elevated: 0 8px 32px hsl(222 47% 4% / 0.6);
+
+    --glass-bg: hsl(222 47% 10% / 0.6);
+    --glass-border: hsl(217 33% 25% / 0.3);
+
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 173 80% 45%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 14%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 15%;
+    --sidebar-ring: 173 80% 45%;
+
+    /* Status colors */
+    --status-high: 152 76% 50%;
+    --status-medium: 38 92% 50%;
+    --status-low: 0 72% 55%;
+    --status-info: 199 89% 48%;
+
+    /* Chart colors */
+    --chart-1: 173 80% 45%;
+    --chart-2: 199 89% 48%;
+    --chart-3: 152 76% 50%;
+    --chart-4: 262 83% 58%;
+    --chart-5: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-[hsl(var(--glass-bg))] backdrop-blur-xl border border-[hsl(var(--glass-border))];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .score-ring {
+    stroke-linecap: round;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(173 80% 45% / 0.2);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(173 80% 45% / 0.4);
+    }
+  }
+
+  .animate-score-fill {
+    animation: score-fill 1.5s ease-out forwards;
+  }
+
+  @keyframes score-fill {
+    from {
+      stroke-dashoffset: 283;
+    }
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+}
