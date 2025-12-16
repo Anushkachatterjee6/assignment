@@ -68,8 +68,5 @@ The project was built using a rapid prototyping workflow to iterate quickly on l
 
 ---
 
-## Running Locally
-
-```bash
 
 
