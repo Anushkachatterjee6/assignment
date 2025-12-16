@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# Biotech Intent Navigator
 
-## Project info
+Biotech Intent Navigator is a lightweight AI-powered Business Development intelligence tool designed to help prioritize biotech and pharmaceutical professionals based on their likelihood to adopt **3D in-vitro models for therapy design**.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+The project focuses on **decision intelligence** — combining scientific intent, role relevance, organizational readiness, and geographic signals to rank leads in a way that mirrors how a real BD team would think.
 
-## How can I edit this code?
+## Problem Context
 
-There are several ways of editing your application.
+Business development teams in deep-tech biotech often struggle with *lead overload*. Traditional lead lists lack context around:
+- Who is scientifically active right now
+- Who has decision-making power
+- Which organizations are funded and ready to experiment
+- Where outreach is most likely to convert
 
-**Use Lovable**
+This project was built to address that gap by prioritizing **intent**, not volume.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Approach & System Design
 
-**Use your preferred IDE**
+The system follows a simple, modular pipeline:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1. Identification
+Profiles are selected based on role relevance (e.g., toxicology, safety, preclinical leadership), research focus, and geographic hubs.
 
-Follow these steps:
+### 2. Enrichment
+Each profile is enriched with:
+- Role seniority
+- Research activity (recent publications)
+- Funding stage / organizational readiness
+- Person location vs company HQ
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 3. Scoring (Core Logic)
+Each lead is assigned an explainable **Propensity-to-Buy Score (0–100)** based on weighted signals:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Role Fit (30)
+- Scientific Intent (40)
+- Company & Funding Readiness (20)
+- Location Signal (10)
 
-# Step 3: Install the necessary dependencies.
-npm i
+The goal is not just ranking, but explaining *why* a lead ranks high.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 4. BD Action Recommendation
+Each lead includes a suggested next outreach step (e.g., email intro, conference connect, LinkedIn warm-up).
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Data & Assumptions
 
-**Use GitHub Codespaces**
+This demo uses **synthetic but realistic data** to focus on reasoning, prioritization, and scoring logic rather than live scraping.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The architecture is designed to be API-ready and can be extended to real data sources such as:
+- LinkedIn / Sales Navigator
+- PubMed / Google Scholar
+- Crunchbase / PitchBook
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Tech Stack
 
+- React + TypeScript
 - Vite
-- TypeScript
-- React
-- shadcn-ui
 - Tailwind CSS
+- shadcn/ui
 
-## How can I deploy this project?
+The project was built using a rapid prototyping workflow to iterate quickly on logic and UX.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+---
 
-## Can I connect a custom domain to my Lovable project?
+## Running Locally
 
-Yes, you can!
+```bash
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
